@@ -95,15 +95,15 @@ Segue abaixo o link para baixar e visualizar meu currículo!! </p>
   <div class="title">
     <h1>Entre em contato comigo!!</h1>
   <div class="contact-form">
-    <div class="input-fields">
-      <input type="text" class="input" placeholder="Nome">
-      <input type="text" class="input" placeholder="E-mail">
-      <input type="text" class="input" placeholder="Assunto">
-    </div>
-    <div class="msg">
-      <textarea placeholder="Digite sua Mensagem."></textarea>
-      <div class="btn btn-black">Enviar</div>
-    </div>
+    <form class="input-fields" method="POST" action="./email.php">
+      <input type="text" class="input" name="name" placeholder="Nome">
+      <input type="text" class="input" name="email" placeholder="E-mail">
+      <input type="text" class="input" name="subject" placeholder="Assunto">
+      <div class="msg">
+      <textarea name="message" placeholder="Digite sua Mensagem."></textarea>
+      <input class="btn btn-black" type="submit" value="Enviar"></input>
+      </div>
+    </form>
   </div>
 </div>
 </div>
