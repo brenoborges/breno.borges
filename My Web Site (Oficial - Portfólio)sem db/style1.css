@@ -7,8 +7,6 @@ body{
     padding: 0;
     background: #262626;
     align-items: center;
-    min-width: 1200px;
-    max-width: 1900px;
 }
 
 h1{
@@ -49,7 +47,6 @@ section{
 .imagebox{
     width: calc(50% + 50px);
     height: 100%;
-    background: #000000;
     box-sizing: border-box;
     border-left: 100px solid #ffffff;
     border-bottom: 400px solid transparent;
@@ -83,5 +80,13 @@ section{
     font-family:"Dark Phoenix";
     text-align: center;
     color: #fff;
+}
+
+.confirmado{
+    width: 30%;
+    height: 30%;
+    float: center;
+    margin-left: 35%;
+    margin-top: -5%;
 }
 
