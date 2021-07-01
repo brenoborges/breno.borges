@@ -1,0 +1,34 @@
+.margin{
+    margin-top: 15%;
+}
+
+@font-face {
+    font-family: DK Frozen Memory;
+    src: url(DKFrozenMemory.otf);
+    src: url('DKFrozenMemory.eot?#iefix') format('embedded-opentype'),
+        url('DKFrozenMemory.woff') format('woff'),
+        url('DKFrozenMemory.ttf') format('truetype'),
+        url('DKFrozenMemory.svg#DKFrozenMemory') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+.font{
+    font-family: "DK Frozen Memory";
+}
+
+@font-face {
+    font-family: NewYork;
+    src: url(NewYork.otf);
+    src: url('NewYork.eot?#iefix') format('embedded-opentype'),
+        url('NewYork.woff') format('woff'),
+        url('NewYork.ttf') format('truetype'),
+        url('NewYork.svg#NewYork') format('svg');
+    font-weight: bolder;
+    font-style: normal;
+}
+
+.font-two{
+    font-family: "NewYork";
+    font-size: 1.25rem;
+}
