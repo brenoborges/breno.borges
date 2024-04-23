@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra seu Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+<style>
+    ::-webkit-scrollbar {
+        width: 7px;
+        /* largura da scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        /* cor da trilha */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #F1CC2F;
+        /* cor do polegar */
+        border-radius: 5px;
+        /* arredondamento do polegar */
+    }
+
+    .c-btn {
+        background-color: #F1CC2F
+    }
+
+    .c-btn:hover {
+        background-color: #ab9224;
+    }
+</style>
+
+<body>
+    <script src="app.js"></script>
+    <img src="./img/CC1.png" class="d-block" style="width:100%; height:350px;" alt="...">
+    <div class="container-fluid mt-3 mb-3">
+        <div class="row w-100 justify-content-center">
+            <div class="card w-50">
+                <div class="col-md-12 d-flex text-center justify-content-center mt-3">
+                    <img src="./img/Marketing-e-Arquétipos.png" class="img-responsive rounded-start" width="10%"
+                        height="91%" alt="" />
+                    <h1 class="fw-bold text-white p-3 rounded-end" style="background-color: #F1CC2F;">Descubra seu
+                        Perfil
+                    </h1>
+                </div>
+                <div class="col-md-12">
+                    <h3 class="text-center">Vou te dar algumas instruções abaixo:</h3>
+                    <p class="text-center">Responda as perguntas que melhor descreve o seu Perfil como Vendedor,
+                        para isso é só dar um clique na resposta que mais define você em cada frase.
+                        Em seguida você receberá o seu resultado. Inicie sua Avaliação abaixo:</p>
+                    <button type="button" class="btn c-btn text-white d-block mx-auto" id="startAssessment"
+                        onclick="toggleFormulario('formQuest')">Comece aqui sua Avaliação!!</button>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="formQuest" style="display: none;">
+        <div class="row w-100 justify-content-center">
+            <div class="card w-50 h-25 overflow-auto  mb-3">
+                <form id="form-group">
+                    <!-- Titulo -->
+                    <h3 class="border text-center text-white rounded-bottom-pill" style="background-color:#F1CC2F">1.
+                        Atitudes</h3>
+                    <br>
+                    <!-- Pergunta 1.1 -->
+                    <h4>1.1. Esforços extras:</h4>
+                    <label>Você costuma fazer esforços extras para alcançar seus objetivos?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.1" id="1.1a" checked>
+                            <label class="form-check-label" for="1.1a">Sim</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.1" id="1.1b">
+                            <label class="form-check-label" for="1.1b">Não</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.2 -->
+                    <h4>1.2. Lida com desafios:</h4>
+                    <label>Como você aborda desafios e obstáculos nas vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.2" id="1.2a" checked>
+                            <label class="form-check-label" for="1.2a">Desisto facilmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.2" id="1.2b">
+                            <label class="form-check-label" for="1.2b">Persevero</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.3 -->
+                    <h4>1.3. Motivação para sucesso:</h4>
+                    <label>O que o motiva a ter sucesso nas vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.3" id="1.3-a"
+                                onclick="fecharInput('1.3-a')" checked>
+                            <label class="form-check-label" for="1.3-a">Realização pessoal</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.3" id="1.3-b"
+                                onclick="fecharInput('1.3-b')">
+                            <label class="form-check-label" for="1.3-b">Reconhecimento</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.3" id="1.3c"
+                                onclick="mostrarInput('1.3c')">
+                            <label class="form-check-label" for="1.3c">Outro</label>
+                        </div>
+                        <div id="inputContainer" style="display: none;">
+                            <label for="especificar">Especifique:</label>
+                            <input class="rounded border border-warning" type="text" id="especificar" name="especificar"
+                                style="outline: none;">
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.4 -->
+                    <h4>1.4. Feedback e desenvolvimento:</h4>
+                    <label>Como busca aprimorar suas habilidades de vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.4" id="1.4a" checked>
+                            <label class="form-check-label" for="1.4a">Solicito feedback regularmente
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.4" id="1.4b">
+                            <label class="form-check-label" for="1.4b">Não busco feedback regularmente
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.5 -->
+                    <h4>1.5. Foco nos resultados:</h4>
+                    <label>Como você define e busca alcançar metas nas vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.5" id="1.5a" checked>
+                            <label class="form-check-label" for="1.5a">Estabeleço metas claras</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.5" id="1.5b">
+                            <label class="form-check-label" for="1.5b">Não estabeleço metas específicas
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.6 -->
+                    <h4>1.6. Fidelidade à empresa:</h4>
+                    <label> Até que ponto você se considera leal à empresa em que trabalha?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.6" id="1.6a" checked>
+                            <label class="form-check-label" for="1.6a">Altamente leal</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.6" id="1.6b">
+                            <label class="form-check-label" for="1.6b">Menos leal</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.7 -->
+                    <h4>1.7. Curiosidade:</h4>
+                    <label> Você demonstra interesse e curiosidade sobre os clientes e produtos?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.7" id="1.7a" checked>
+                            <label class="form-check-label" for="1.7a">Sim</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.7" id="1.7b">
+                            <label class="form-check-label" for="1.7b">Não</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.8 -->
+                    <h4>1.8. Iniciativa própria:</h4>
+                    <label> Como você demonstra iniciativa própria nas vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.8" id="1.8a" checked>
+                            <label class="form-check-label" for="1.8a">Tomo ações proativas</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.8" id="1.8b">
+                            <label class="form-check-label" for="1.8b">Aguardo instruções</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.9 -->
+                    <h4>1.9. Tolerância ao risco de desaprovação:</h4>
+                    <label> Como você lida com a possibilidade de rejeição nas vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.9" id="1.9a" checked>
+                            <label class="form-check-label" for="1.9a">Fico Desmotivado</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.9" id="1.9b">
+                            <label class="form-check-label" for="1.9b">Aceito bem</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 1.10 -->
+                    <h4>1.10. Acessibilidade:</h4>
+                    <label> Como você se posiciona em relação à acessibilidade aos clientes?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.10" id="1.10a" checked>
+                            <label class="form-check-label" for="1.10a">Sempre disponível</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="1.10" id="1.10b">
+                            <label class="form-check-label" for="1.10b">Seletivo na disponibilidade
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h3 class="border text-center text-white rounded-bottom-pill" style="background-color:#F1CC2F">2.
+                        Competências e Comportamento</h3>
+
+                    <!-- Pergunta 2.1 -->
+                    <h4>2.1. Visão de mundo única:</h4>
+                    <label> Como você aborda situações de vendas de maneira única?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.1" id="2.1a" onclick="limitarSelecao('2.1')">
+                            <label class="form-check-label" for="2.1a">Apresento perspectivas inovadoras
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.1" id="2.1b" onclick="limitarSelecao('2.1')">
+                            <label class="form-check-label" for="2.1b">Sigo abordagens tradicionais
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.1" id="2.1c" onclick="limitarSelecao('2.1')">
+                            <label class="form-check-label" for="2.1c">Apresento perspectivas criativas
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.1" id="2.1d" onclick="limitarSelecao('2.1')">
+                            <label class="form-check-label" for="2.1d">Sempre sigo abordagens convencionais
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.2 -->
+                    <h4>2.2. Compreende atividades dos clientes:</h4>
+                    <label> Como se informa sobre as atividades e necessidades dos clientes?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.2" id="2.2a" onclick="limitarSelecao('2.2')">
+                            <label class="form-check-label" for="2.2a">Pesquisas regulares</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.2" id="2.2b" onclick="limitarSelecao('2.2')">
+                            <label class="form-check-label" for="2.2b">Comunicação direta com os
+                                clientes</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.2" id="2.2c" onclick="limitarSelecao('2.2')">
+                            <label class="form-check-label" for="2.2c">Observo de longe</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.2" id="2.2d" onclick="limitarSelecao('2.2')">
+                            <label class="form-check-label" for="2.2d">Não busco informações</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.3 -->
+                    <h4>2.3. Adora discutir:</h4>
+                    <label>Como lida com opiniões divergentes durante uma negociação?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.3" id="2.3-a" onclick="limitarSelecao('2.3')">
+                            <label class="form-check-label" for="2.3-a">Debato para encontrar soluções</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.3" id="2.3-b" onclick="limitarSelecao('2.3')">
+                            <label class="form-check-label" for="2.3-b">Debato por diversão</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.3" id="2.3-c" onclick="limitarSelecao('2.3')">
+                            <label class="form-check-label" for="2.3-c">Desisto facilmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.3" id="2.3-d" onclick="limitarSelecao('2.3')">
+                            <label class="form-check-label" for="2.3-d">Evito discussões</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.4 -->
+                    <h4>2.4. Instiga o cliente:</h4>
+                    <label>Como incentiva os clientes a considerarem novas abordagens?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.4" id="2.4a" onclick="limitarSelecao('2.4')">
+                            <label class="form-check-label" for="2.4a">Apresento desafios construtivos</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.4" id="2.4b" onclick="limitarSelecao('2.4')">
+                            <label class="form-check-label" for="2.4b">Apresento ideias provocativas</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.4" id="2.4c" onclick="limitarSelecao('2.4')">
+                            <label class="form-check-label" for="2.4c">Sigo as preferências do cliente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="2.4" id="2.4d" onclick="limitarSelecao('2.4')">
+                            <label class="form-check-label" for="2.4d">Não procuro influenciar</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.5 -->
+                    <h4>2.5. Tino comercial:</h4>
+                    <label>Como você demonstra habilidade comercial nas vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.5" id="2.5a">
+                            <label class="form-check-label" for="2.5a">Identifico oportunidades
+                                rapidamente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.5" id="2.5b">
+                            <label class="form-check-label" for="2.5b">Identifico oportunidades
+                                ocasionalmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.5" id="2.5c">
+                            <label class="form-check-label" for="2.5c">Aguardo oportunidades surgirem</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.5" id="2.5d">
+                            <label class="form-check-label" for="2.5d">Não procuro oportunidades</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.6 -->
+                    <h4>2.6. Avaliação das necessidades do cliente:</h4>
+                    <label>Como avalia as necessidades específicas dos seus clientes?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.6" id="2.6a">
+                            <label class="form-check-label" for="2.6a">Realizo análises detalhadas</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.6" id="2.6b">
+                            <label class="form-check-label" for="2.6b">Confio na intuição baseada na
+                                experiência</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.6" id="2.6c">
+                            <label class="form-check-label" for="2.6c">Confio na intuição sem
+                                análise</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.6" id="2.6d">
+                            <label class="form-check-label" for="2.6d">Não avalio</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.7 -->
+                    <h4>2.7. Comunicação eficaz:</h4>
+                    <label>Como se comunica de maneira eficaz durante uma venda?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.7" id="2.7a">
+                            <label class="form-check-label" for="2.7a">Clareza e objetividade</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.7" id="2.7b">
+                            <label class="form-check-label" for="2.7b">Abordagem mais informal</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.7" id="2.7c">
+                            <label class="form-check-label" for="2.7c">Uso de linguagem técnica</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.7" id="2.7d">
+                            <label class="form-check-label" for="2.7d">Comunicação ambígua</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.8 -->
+                    <h4>2.8. Uso de recursos internos:</h4>
+                    <label> Em que medida utiliza recursos internos da empresa nas vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.8" id="2.8a">
+                            <label class="form-check-label" for="2.8a">Utilizo amplamente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.8" id="2.8b">
+                            <label class="form-check-label" for="2.8b">Utilizo ocasionalmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.8" id="2.8c">
+                            <label class="form-check-label" for="2.8c">Minimamente dependente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.8" id="2.8d">
+                            <label class="form-check-label" for="2.8d">Não utilizo</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.9 -->
+                    <h4>2.9. Negociação:</h4>
+                    <label>Como você conduz negociações durante o processo de vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.9" id="2.9a">
+                            <label class="form-check-label" for="2.9a">Assertivamente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.9" id="2.9b">
+                            <label class="form-check-label" for="2.9b">Cede facilmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.9" id="2.9c">
+                            <label class="form-check-label" for="2.9c">Busco equilíbrio</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.9" id="2.9d">
+                            <label class="form-check-label" for="2.9d">Evito negociações</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 2.10 -->
+                    <h4>2.10. Gerenciamento de relacionamento:</h4>
+                    <label>Como constrói e mantém relacionamentos a longo prazo?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.10" id="2.10a">
+                            <label class="form-check-label" for="2.10a">Investindo tempo e esforço</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.10" id="2.10b">
+                            <label class="form-check-label" for="2.10b">Relações mais transacionais</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.10" id="2.10c">
+                            <label class="form-check-label" for="2.10c">Construo relacionamentos com
+                                facilidade</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="2.10" id="2.10d">
+                            <label class="form-check-label" for="2.10d">Não busco relacionamentos
+                                duradouros</label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h3 class="border text-center text-white rounded-bottom-pill" style="background-color:#F1CC2F">3.
+                        Atividades</h3>
+                    <br>
+                    <!-- Pergunta 3.1 -->
+                    <h4>3.1.Constrói relações sólidas:</h4>
+                    <label>Como constrói relações sólidas com os clientes?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.1" id="3.1a">
+                            <label class="form-check-label" for="3.1a">Investindo tempo em construção de relacionamentos
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.1" id="3.1b">
+                            <label class="form-check-label" for="3.1b">Envolvimento profissional
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.1" id="3.1c">
+                            <label class="form-check-label" for="3.1c">Mantendo relações formais
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.1" id="3.1d">
+                            <label class="form-check-label" for="3.1d">Não foco em construção de relacionamentos
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.2 -->
+                    <h4>3.2. Apoio além das vendas:</h4>
+                    <label> Como apoia colegas e clientes além das vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.2" id="3.2a">
+                            <label class="form-check-label" for="3.2a">Disponibilidade constante</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.2" id="3.2b">
+                            <label class="form-check-label" for="3.2b">Foco apenas nas transações de vendas</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.2" id="3.2c">
+                            <label class="form-check-label" for="3.2c">Ajudo ocasionalmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.2" id="3.2">
+                            <label class="form-check-label" for="3.2d">Não me envolvo além das transações</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.3 -->
+                    <h4>3.3. Abordagem em relacionamentos:</h4>
+                    <label>Como aborda relacionamentos com colegas e clientes?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.3" id="3.3-a">
+                            <label class="form-check-label" for="3.3-a">Colaboração aberta</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.3" id="3.3-b">
+                            <label class="form-check-label" for="3.3-b">Relações mais formais</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.3" id="3.3-c">
+                            <label class="form-check-label" for="3.3-c">Adapto-me ao estilo do cliente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.3" id="3.3-d">
+                            <label class="form-check-label" for="3.3-d">Mantenho relações superficiais</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.4 -->
+                    <h4>3.4. Adoção do processo de vendas:</h4>
+                    <label>Como você adota o processo de vendas estabelecido pela empresa?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.4" id="3.4a">
+                            <label class="form-check-label" for="3.4a">Sigo rigorosamente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.4" id="3.4b">
+                            <label class="form-check-label" for="3.4b">Faço ajustes conforme necessário</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.4" id="3.4c">
+                            <label class="form-check-label" for="3.4c">Não sigo o processo rigorosamente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.4" id="3.4d">
+                            <label class="form-check-label" for="3.4d">Não sigo o processo</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.5 -->
+                    <h4>3.5. Avaliação de oportunidades:</h4>
+                    <label>Como avalia oportunidades de venda potenciais?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.5" id="3.5a">
+                            <label class="form-check-label" for="3.5a">Analiso detalhadamente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.5" id="3.5b">
+                            <label class="form-check-label" for="3.5b">Confio na intuição</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.5" id="3.5c">
+                            <label class="form-check-label" for="3.5c">Procuro avaliações externas</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.5" id="3.5d">
+                            <label class="form-check-label" for="3.5d">Confio nas estatísticas de mercado</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.5" id="3.5e">
+                            <label class="form-check-label" for="3.5e">Não utilizo dados deestatísticas de mercado / Não
+                                Procuro avaliações externas / Não Confio na intuição</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.6 -->
+                    <h4>3.6. Preparação:</h4>
+                    <label>Como se prepara para reuniões e negociações de vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.6" id="3.6a">
+                            <label class="form-check-label" for="3.6a">Pesquisa e planejamento detalhados</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.6" id="3.6b">
+                            <label class="form-check-label" for="3.6b">Preparação mínima</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.6" id="3.6c">
+                            <label class="form-check-label" for="3.6c"> Conto com experiência prévia</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.6" id="3.6d">
+                            <label class="form-check-label" for="3.6d">Não me preparo</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.7 -->
+                    <h4>3.7. Como administra suas tarefas e responsabilidades de vendas:</h4>
+                    <label> Como administra suas tarefas e responsabilidades de vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.7" id="3.7a">
+                            <label class="form-check-label" for="3.7a">Ativamente envolvido</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.7" id="3.7b">
+                            <label class="form-check-label" for="3.7b">Delego essa responsabilidade</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.7" id="3.7c">
+                            <label class="form-check-label" for="3.7c">Contribuo ocasionalmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.7" id="3.7d">
+                            <label class="form-check-label" for="3.7d">Não participo</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.8 -->
+                    <h4>3.8. Administração:</h4>
+                    <label> Como administra suas tarefas e responsabilidades de vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.8" id="3.8a">
+                            <label class="form-check-label" for="3.8a">Não administro</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.8" id="3.8b">
+                            <label class="form-check-label" for="3.8b">Delego responsabilidades</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.8" id="3.8c">
+                            <label class="form-check-label" for="3.8c">Abordagem mais flexível</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.8" id="3.8d">
+                            <label class="form-check-label" for="3.8d">Organização meticulosa</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.9 -->
+                    <h4>3.9. Inovação no processo de vendas:</h4>
+                    <label>Como contribui para inovações no processo de vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.9" id="3.9a">
+                            <label class="form-check-label" for="3.9a">Apresento ideias inovadoras</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.9" id="3.9b">
+                            <label class="form-check-label" for="3.9b">Sigo as práticas convencionais</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.9" id="3.9c">
+                            <label class="form-check-label" for="3.9c">Adapto-me a inovações da equipe</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.9" id="3.9d">
+                            <label class="form-check-label" for="3.9d">Não busco inovação</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 3.10 -->
+                    <h4>3.10. Adaptação às mudanças no mercado:</h4>
+                    <label> Como se adapta a mudanças nas condições e demandas do mercado?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.10" id="3.10a">
+                            <label class="form-check-label" for="3.10a">Rapidamente me ajusto</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.10" id="3.10b">
+                            <label class="form-check-label" for="3.10b">Resisto a mudanças significativas</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.10" id="3.10c">
+                            <label class="form-check-label" for="3.10c">Adapto-me moderadamente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.10" id="3.10d">
+                            <label class="form-check-label" for="3.10d"> Não me adapto</label>
+                        </div>
+                    </div>
+
+                    <br>
+                    <br>
+                    <h3 class="border text-center text-white rounded-bottom-pill" style="background-color:#F1CC2F">4.
+                        Conhecimento:</h3>
+                    <br>
+                    <!-- Pergunta 4.1 -->
+                    <h4>4.1. Conhecimento da indústria:</h4>
+                    <label>Em que medida possui conhecimento da indústria em que atua?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.1" id="4.1a">
+                            <label class="form-check-label" for="4.1a">Amplo conhecimento
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.1" id="4.1b">
+                            <label class="form-check-label" for="4.1b">Conhecimento detalhado
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.1" id="4.1c">
+                            <label class="form-check-label" for="4.1c">Conhecimento básico
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.1" id="4.1d">
+                            <label class="form-check-label" for="4.1d">Conhecimento superficial
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.2 -->
+                    <h4>4.2. Conhecimento do produto:</h4>
+                    <label>Quão familiarizado está com os produtos ou serviços que vende?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.2" id="4.2a">
+                            <label class="form-check-label" for="4.2a">Conhecimento detalhado</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.2" id="4.2b">
+                            <label class="form-check-label" for="4.2b">Conhecimento básico</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.2" id="4.2c">
+                            <label class="form-check-label" for="4.2c">Conhecimento superficial</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.2" id="4.2">
+                            <label class="form-check-label" for="4.2d">Conhecimento limitado</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.3 -->
+                    <h4>4.3. Atualização constante:</h4>
+                    <label>Como se mantém atualizado sobre as novidades do setor?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.3" id="4.3-a">
+                            <label class="form-check-label" for="4.3-a">Participação em eventos e treinamentos</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.3" id="3.3-b">
+                            <label class="form-check-label" for="4.3-b">Não busco atualização constante</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.3" id="4.3-c">
+                            <label class="form-check-label" for="4.3-c">Leitura ocasional</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="3.3" id="4.3-d">
+                            <label class="form-check-label" for="4.3-d">Não me interesso por atualizações</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.4 -->
+                    <h4>4.4. Compreensão do mercado:</h4>
+                    <label>Como interpreta as tendências e movimentações do mercado?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.4" id="4.4a">
+                            <label class="form-check-label" for="4.4a">Análise regular e interpretação ativa</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.4" id="4.4b">
+                            <label class="form-check-label" for="4.4b">Acompanhamento ocasional</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.4" id="4.4c">
+                            <label class="form-check-label" for="4.4c">Não acompanho de perto</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.4" id="4.4d">
+                            <label class="form-check-label" for="4.4d">Não me preocupo com as tendências</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.5 -->
+                    <h4>4.5. Análise de concorrentes:</h4>
+                    <label>Como avalia e compreende as estratégias dos seus concorrentes?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.5" id="4.5a">
+                            <label class="form-check-label" for="4.5a">Monitoramento constante</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.5" id="4.5b">
+                            <label class="form-check-label" for="4.5b">Acompanhamento moderado</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.5" id="4.5c">
+                            <label class="form-check-label" for="4.5c">Pouca atenção aos concorrentes</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.5" id="4.5d">
+                            <label class="form-check-label" for="4.5d">Despreocupação com as estratégias dos
+                                concorrentes</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.6 -->
+                    <h4>4.6. Utilização de dados na tomada de decisão:</h4>
+                    <label> Em que medida utiliza dados para orientar suas decisões de vendas?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.6" id="4.6a">
+                            <label class="form-check-label" for="4.6a">Uso extensivo de dados</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.6" id="4.6b">
+                            <label class="form-check-label" for="4.6b"> Utilização moderada de dados</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.6" id="4.6c">
+                            <label class="form-check-label" for="4.6c">Decisões baseadas em intuição</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.6" id="4.6d">
+                            <label class="form-check-label" for="4.6d">Não utilizo dados</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.7 -->
+                    <h4>4.7. Adaptação à evolução do setor:</h4>
+                    <label> Como se adapta às mudanças e evolução do setor em que atua?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.7" id="4.7a">
+                            <label class="form-check-label" for="4.7a">Prontamente me adapto</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.7" id="4.7b">
+                            <label class="form-check-label" for="4.7b"> Adaptação moderada</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.7" id="4.7c">
+                            <label class="form-check-label" for="4.7c">Resistência a mudanças</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.7" id="4.7d">
+                            <label class="form-check-label" for="4.7d">Não me adapto às mudanças</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.8 -->
+                    <h4>4.8. Compreensão das necessidades do cliente:</h4>
+                    <label>Como identifica e compreende as necessidades específicas dos clientes?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.8" id="4.8a">
+                            <label class="form-check-label" for="4.8a">Entrevistas detalhadas</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.8" id="4.8b">
+                            <label class="form-check-label" for="4.8b">Conversas informais</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.8" id="4.8c">
+                            <label class="form-check-label" for="4.8c"> Abordagem mais empática</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.8" id="4.8d">
+                            <label class="form-check-label" for="4.8d">Não foco nas necessidades do cliente</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.9 -->
+                    <h4>4.9. Educação contínua:</h4>
+                    <label>Como investe em sua própria educação e desenvolvimento profissional?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.9" id="4.9a">
+                            <label class="form-check-label" for="4.9a">Cursos e treinamentos regulares</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.9" id="4.9b">
+                            <label class="form-check-label" for="4.9b">Leitura ocasional</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.9" id="4.9c">
+                            <label class="form-check-label" for="4.9c">Limitada busca por desenvolvimento</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.9" id="4.9d">
+                            <label class="form-check-label" for="4.9d">Não busco educação contínua</label>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Pergunta 4.10 -->
+                    <h4>4.10. Compartilhamento de conhecimento:</h4>
+                    <label> Como contribui para o compartilhamento de conhecimento dentro da equipe?</label>
+                    <div class="d-block">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.10" id="4.10a">
+                            <label class="form-check-label" for="4.10a">Ativamente compartilho insights</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.10" id="4.10b">
+                            <label class="form-check-label" for="4.10b">Compartilho informações ocasionalmente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.10" id="4.10c">
+                            <label class="form-check-label" for="4.10c">Prefiro manter meu conhecimento</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="4.10" id="4.10d">
+                            <label class="form-check-label" for="4.10d">Não vejo necessidade de compartilhar</label>
+                        </div>
+                    </div>
+                    <button class="btn c-btn text-white text-center mt-5" type="button"
+                        onclick="calcularPerfil('perfil'), salvarResposta()" style="margin-left: 19vw;">Calcular Perfil</button>
+                </form>
+                <br>
+                <h2 class="text-center">Seu Perfil é: <span id="perfil" class="text-white rounded"></span></h2>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
